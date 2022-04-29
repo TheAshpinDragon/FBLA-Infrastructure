@@ -25,9 +25,9 @@ Writen in C++, using the OLC Pixel Game Engine.
 	Documentation:  https://github.com/OneLoneCoder/olcPixelGameEngine/wiki
 
 Group members:
-	David Gorzynski - Programmer - dagorzynski@gmail.com - 770 722 2508
-	Emilio Lopez - Composer - emiliolopezwham@gmail.com - 770 885 0478
-	Brayden Bayle - Artist - 3brayden.bayle3@gmail.com - 470 869 6328 
+	David Gorzynski - Programmer
+	Emilio Lopez - Composer
+	Brayden Bayle - Artist
 
 DESCRIPTION:
 This is a top-down city building arcade game that requires the user to quickly expand before time runs out.
@@ -64,6 +64,6 @@ You will be returned to the main menu
 EXTRA KEY BINDS:
 	SHIFT + R = reset
 	SHIFT + V = speed up game
-	SHIFT + C = advance window
+	SHIFT + C = advance window or skip level
 		Main Menu: changes from video to score board
 		Game: wins the level
