@@ -144,8 +144,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="olcPixelGameEngine.cpp" />
-    <ClCompile Include="ResourceMatrix.cpp" />
-    <ClCompile Include="ResourceMatrix.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Arcade_Font_colorable[8x8]v3.png" />

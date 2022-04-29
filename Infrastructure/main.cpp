@@ -23,9 +23,6 @@
 #define OLC_PGEX_SOUND
 #include "olcPGEX_Sound.h"
 
-//#include "infraAssetManager.h"
-//#include "ResourceMatrix.h"
-
 #define PI 3.141592653589
 #define ScreenCellWidth 9
 #define ScreenCellHeight 7
