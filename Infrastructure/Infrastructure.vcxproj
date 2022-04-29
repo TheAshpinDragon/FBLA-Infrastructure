@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{448D5B25-83ED-481F-ABA0-ED2D70329B97}</ProjectGuid>
+    <RootNamespace>Infrastructure</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="olcPGEX_Sound.h" />
+    <ClInclude Include="olcPixelGameEngine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="olcPixelGameEngine.cpp" />
+    <ClCompile Include="ResourceMatrix.cpp" />
+    <ClCompile Include="ResourceMatrix.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Arcade_Font_colorable[8x8]v3.png" />
+    <Image Include="InfrastructureAssetsV7.png" />
+    <Image Include="InfrastructureIcons.png" />
+    <Image Include="InfrastructureLogo-min.png" />
+    <Image Include="menuVideoFrames\frame_000_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_001_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_002_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_003_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_004_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_005_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_006_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_007_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_008_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_009_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_010_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_011_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_012_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_013_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_014_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_015_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_016_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_017_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_018_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_019_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_020_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_021_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_022_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_023_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_024_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_025_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_026_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_027_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_028_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_029_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_030_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_031_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_032_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_033_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_034_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_035_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_036_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_037_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_038_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_039_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_040_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_041_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_042_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_043_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_044_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_045_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_046_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_047_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_048_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_049_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_050_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_051_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_052_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_053_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_054_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_055_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_056_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_057_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_058_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_059_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_060_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_061_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_062_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_063_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_064_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_065_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_066_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_067_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_068_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_069_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_070_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_071_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_072_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_073_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_074_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_075_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_076_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_077_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_078_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_079_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_080_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_081_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_082_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_083_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_084_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_085_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_086_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_087_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_088_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_089_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_090_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_091_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_092_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_093_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_094_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_095_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_096_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_097_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_098_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_099_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_100_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_101_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_102_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_103_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_104_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_105_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_106_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_107_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_108_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_109_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_110_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_111_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_112_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_113_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_114_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_115_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_116_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_117_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_118_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_119_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_120_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_121_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_122_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_123_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_124_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_125_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_126_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_127_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_128_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_129_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_130_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_131_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_132_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_133_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_134_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_135_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_136_delay-0.1s.png" />
+    <Image Include="menuVideoFrames\frame_137_delay-0.1s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Scores.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\Music\MainTheme.wav" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
