@@ -143,7 +143,7 @@ namespace ASSETS
 	{
 		olc::SOUND::InitialiseAudio(44100, 1, 8, 512);
 		olc::SOUND::LoadAudioSample(theme);
-		//olc::SOUND::PlaySample(1, true);
+		olc::SOUND::PlaySample(1, true);
 	}
 
 	/* = = = = = SCORE MEMORY = = = = = */
@@ -1234,7 +1234,8 @@ public:
 		{
 			if (enabled)
 			{
-				game->FillRectDecal(pos, size, color);
+				if(color != olc::BLANK)
+					game->FillRectDecal(pos, size, color);
 
 				drawElements(game);
 			}
@@ -1284,7 +1285,9 @@ public:
 			{
 				if (enabled)
 				{
-					//game->FillRectDecal(pos, size, color);
+					if (color != olc::BLANK)
+						game->FillRectDecal(pos, size, color);
+
 					drawElements(game);
 
 					if (cullTransparent)
@@ -1370,7 +1373,9 @@ public:
 			{
 				if (enabled)
 				{
-					game->FillRectDecal(pos, size, color);
+					if (color != olc::BLANK)
+						game->FillRectDecal(pos, size, color);
+
 					drawElements(game);
 
 					drawLabel(game, content);
@@ -1446,7 +1451,9 @@ public:
     	    {
     	        if(enabled)
                 {
-					//game->FillRectDecal(pos, size, color);
+					if (color != olc::BLANK)
+						game->FillRectDecal(pos, size, color);
+
 					drawElements(game);
 
 					if (frames && currentFrame < maxFrame)
@@ -2721,7 +2728,7 @@ public:
 			// Background video
 			mainMenu->elements.push_back(
 				new video(
-					"mainMenuVideo", { 0,0 }, { ScreenCellWidth * CellSize, ScreenCellHeight * CellSize }, olc::BLACK, true,
+					"mainMenuVideo", { 0,0 }, { ScreenCellWidth * CellSize, ScreenCellHeight * CellSize }, olc::BLANK, true,
 					10.0f, & ASSETS::menuVideoFrames, true
 				)
 			);
@@ -2744,7 +2751,7 @@ public:
 			);
 
 			// Logo image
-			image* img = new image("logoimg", { -20 , -25 }, { 200, 150 }, olc::BLACK, false, { 0.31f, 0.31f }, olc::WHITE, true);
+			image* img = new image("logoimg", { -20 , -25 }, { 200, 150 }, olc::BLANK, false, { 0.31f, 0.31f }, olc::WHITE, true);
 			img->setDecal(ASSETS::logo);
 			mainMenu->elements.push_back(img);
 		}
@@ -2834,7 +2841,8 @@ public:
 			panel* ScoreBoardEntry = new panel("scoreboardentry", { 0, ScreenCellHeight * CellSize - CharSize * 2 }, { ScreenCellWidth * CellSize, CharSize * 2 }, olc::DARK_GREY, false);
 			{
 				ScoreBoardEntry->elements.push_back(
-					new label("entrylabel", { CharSize * 1, ScreenCellHeight * CellSize - CharSize * 2 }, { ScreenCellWidth * CellSize - CharSize * 2 , CharSize * 2 }, olc::DARK_GREY, true, "SCORE: XXXX  STAGE: X  NAME: ___", olc::WHITE)
+					new label("entrylabel", { CharSize * 1, ScreenCellHeight * CellSize - CharSize * 2 }, { ScreenCellWidth * CellSize - CharSize * 2 , CharSize * 2 }, olc::BLANK, true,
+						"SCORE: XXXX  STAGE: X  NAME: ___", olc::WHITE)
 				);
 			}
 			scoreBoard->elements.push_back(ScoreBoardEntry);
