@@ -124,6 +124,8 @@ namespace ASSETS
     
 	void loadVideo()
 	{
+		menuVideoFrames.reserve(138);
+
 		for (int i = 0; i <= 137; i++)
 		{
 			menuVideoFrames.push_back((
@@ -141,7 +143,7 @@ namespace ASSETS
 	{
 		olc::SOUND::InitialiseAudio(44100, 1, 8, 512);
 		olc::SOUND::LoadAudioSample(theme);
-		olc::SOUND::PlaySample(1, true);
+		//olc::SOUND::PlaySample(1, true);
 	}
 
 	/* = = = = = SCORE MEMORY = = = = = */
@@ -1232,7 +1234,7 @@ public:
 		{
 			if (enabled)
 			{
-				game->FillRect(pos, size, color);
+				game->FillRectDecal(pos, size, color);
 
 				drawElements(game);
 			}
@@ -1282,7 +1284,7 @@ public:
 			{
 				if (enabled)
 				{
-					game->FillRect(pos, size, color);
+					//game->FillRectDecal(pos, size, color);
 					drawElements(game);
 
 					if (cullTransparent)
@@ -1330,9 +1332,6 @@ public:
 					return;
 				}
 
-				if(!cullTransparent)
-					game->DrawDecal(pos, ASSETS::alphaChars.decals[(128 - offset) / ASSETS::alphaChars.columns][(128 - offset) % ASSETS::alphaChars.rows].get(), size, this->color);
-
 				game->DrawDecal(pos, ASSETS::alphaChars.decals[(c - offset) / ASSETS::alphaChars.columns][(c - offset) % ASSETS::alphaChars.rows].get(), size, color);
 			}
 
@@ -1371,7 +1370,7 @@ public:
 			{
 				if (enabled)
 				{
-					game->FillRect(pos, size, color);
+					game->FillRectDecal(pos, size, color);
 					drawElements(game);
 
 					drawLabel(game, content);
@@ -1420,7 +1419,7 @@ public:
     	    video(std::string _name, olc::vi2d _pos, olc::vi2d _size, olc::Pixel _color, bool _enabled,
     	        double _framerate, std::vector<olc::Decal*>* _frames, bool _cullTransparent, olc::vf2d _scale = {1.0f, 1.0f}, olc::Pixel _tint = olc::WHITE)
     	         : super(_name, _pos, _size, _color, _enabled),
-    	            frames(_frames), frameTimer(timer(_framerate / 60, true)), framerate(_framerate), currentFrame(0), maxFrame(_frames->size()),
+    	            frames(_frames), frameTimer(timer(_framerate / 60, true)), framerate(_framerate), currentFrame(1), maxFrame(_frames->size()),
     	            scale(_scale), tint(_tint), cullTransparent(_cullTransparent) {}
     	    
     	    bool update(float _elapsedTime)
@@ -1440,14 +1439,14 @@ public:
     	    void reset()
     	    {
     	        frameTimer.reset();
-    	        currentFrame = 0;
+    	        currentFrame = 1;
     	    }
     	    
     	    void drawSelf(Infrastructure* game) override
     	    {
     	        if(enabled)
                 {
-					game->FillRect(pos, size, color);
+					//game->FillRectDecal(pos, size, color);
 					drawElements(game);
 
 					if (frames && currentFrame < maxFrame)
@@ -1503,8 +1502,8 @@ public:
 			{
 				content.push_back(_game->UI[INDEXS::SCREENS::MAIN::INDEX]);
 				content.push_back(_game->UI[INDEXS::SCREENS::SCORE::INDEX]);
-				content[0]->elements[3]->enabled = true;
-				content[1]->elements[0]->enabled = true;
+				content[GAMEPLAY_VID]->elements[3]->enabled = true;
+				content[SCORE_BOARD]->elements[0]->enabled = true;
 				mode = GAMEPLAY_VID;
 			}
 
@@ -1512,7 +1511,7 @@ public:
             {
         		gamePlayVideo = (video*)(content[0]->elements[INDEXS::SCREENS::MAIN::VIDEO]);
         		gamePlayVideo->reset();
-				transition(0);
+				transition(GAMEPLAY_VID);
 				scoreScreenTimer = timer(5);
 				startTextBlink = timer(1, true);
             }
@@ -2717,7 +2716,7 @@ public:
 	void loadUI()
 	{
 		// All main menu components
-		panel* mainMenu = new panel("mainmenu", olc::vi2d{ 0,0 }, olc::vi2d{ ScreenCellWidth, ScreenCellHeight } *CellSize, olc::GREY, false);
+		panel* mainMenu = new panel("mainmenu", olc::vi2d{ 0,0 }, olc::vi2d{ ScreenCellWidth, ScreenCellHeight } *CellSize, olc::BLANK, false);
 		{
 			// Background video
 			mainMenu->elements.push_back(
@@ -2735,7 +2734,7 @@ public:
 			
 			// Controls
 			mainMenu->elements.push_back(
-				new label("controlsText", { CharSize * 2, (ScreenCellHeight) * CellSize - CharSize * 3 - 1 }, { ScreenCellWidth * CellSize , ScreenCellHeight * CellSize }, olc::BLACK, true,
+				new label("controlsText", { CharSize * 2, (ScreenCellHeight) * CellSize - CharSize * 3 - 1 }, { CharSize * 32 + 2, CharSize * 4 }, olc::BLACK, true,
 					"CONTROLS:                                  \n"
 					"WASD   = MOVE CURSOR | LMB  = BUILD/UPGRADE\n"
 					"ARROWS = MOVE CURSOR | RMB  = CYCLE OPTIONS\n"
@@ -2752,7 +2751,7 @@ public:
 		UI.push_back(mainMenu);
 
 		// All game screen UI
-		panel* gameMenu = new panel("gamemenu", { 0,0 }, { ScreenCellWidth * CellSize, ScreenCellHeight * CellSize }, olc::GREY, false);
+		panel* gameMenu = new panel("gamemenu", { 0,0 }, { ScreenCellWidth * CellSize, ScreenCellHeight * CellSize }, olc::BLANK, false);
 		{
 			// Shows resources
 			panel* topbar = new panel("topbar", { 0,0 }, { ScreenCellWidth * CellSize, CellSize }, olc::BLACK, true);
@@ -2765,12 +2764,12 @@ public:
 				const int catDigits = 6;
 				for (int i = 0; i < 6; i++)
 				{
-					image* img = new image(topNames[i] + "image", topBarImageOffset + topBarResoruceSeparation * i, { IconSize, IconSize }, olc::BLACK, true, { 1.0f, 1.0f }, olc::WHITE);
+					image* img = new image(topNames[i] + "image", topBarImageOffset + topBarResoruceSeparation * i, { IconSize, IconSize }, olc::BLANK, true, { 1.0f, 1.0f }, olc::WHITE);
 					img->setDecal(&ASSETS::infraIcons, { i,0 });
 					topbar->elements.push_back(img);
 
 					topbar->elements.push_back(new label(
-						topNames[i] + "label", topBarTextOffset + topBarResoruceSeparation * i, { CharSize * catDigits, CharSize }, olc::BLACK, true,
+						topNames[i] + "label", topBarTextOffset + topBarResoruceSeparation * i, { CharSize * catDigits, CharSize }, olc::BLANK, true,
 						"000000", olc::WHITE, { 0.9f, 1.0f }, catDigits));
 				}
 			}
@@ -2780,7 +2779,7 @@ public:
 			panel* bottombar = new panel("buildbar", { 0, (ScreenCellHeight - 1) * CellSize }, { ScreenCellWidth * CellSize, CellSize }, olc::BLACK, true);
 			{
 				bottombar->elements.push_back(new image(
-					"iconimg", bottombar->pos + olc::vi2d{ 1, 2 }, { CellSize, CellSize }, olc::BLACK, true,
+					"iconimg", bottombar->pos + olc::vi2d{ 1, 2 }, { CellSize, CellSize }, olc::BLANK, true,
 					{ (CellSize - 4.0f) / CellSize, (CellSize - 4.0f) / CellSize }, olc::WHITE)
 				);
 
@@ -2789,12 +2788,12 @@ public:
 				for (int i = 0; i < 3; i++)
 				{
 					bottombar->elements.push_back(
-						new label("bodylabel" + i, bottombar->pos + olc::vi2d(CellSize * (1.0f + 2.5f * i) + (2 - i), 0), { CellSize * 3, CellSize }, olc::BLACK, true,
+						new label("bodylabel" + i, bottombar->pos + olc::vi2d(CellSize * (1.0f + 2.5f * i) + (2 - i), 0), { CellSize * 3, CellSize }, olc::BLANK, true,
 							"", olc::WHITE, bodyTextSizes[i])
 					);
 
 					bottombar->elements.push_back(
-						new image("delineatorimg" + i, bottombar->pos + olc::vi2d(CellSize * (1.0f + 2.5f * i) - (1 + i), 0), { CellSize, CellSize }, olc::BLACK, true,
+						new image("delineatorimg" + i, bottombar->pos + olc::vi2d(CellSize * (1.0f + 2.5f * i) - (1 + i), 0), { CellSize, CellSize }, olc::BLANK, true,
 							{ 1.0f, 1.0f }, olc::WHITE, true)
 					);
 				}
@@ -2802,7 +2801,7 @@ public:
 			gameMenu->elements.push_back(bottombar);
 
 			// Shows end game state
-			panel* endGameMessage = new panel("celebration", { ScreenCellWidth * CellSize / 2, ScreenCellHeight * CellSize / 2 }, { ScreenCellWidth * CellSize / 4, ScreenCellHeight * CellSize / 4 }, olc::BLACK, false);
+			panel* endGameMessage = new panel("celebration", { ScreenCellWidth * CellSize / 2, ScreenCellHeight * CellSize / 2 }, { ScreenCellWidth * CellSize / 4, ScreenCellHeight * CellSize / 4 }, olc::BLANK, false);
 			{
 				endGameMessage->elements.push_back(
 					new label("messagelabel", endGameMessage->pos - olc::vi2d( CharSize * 25 / 2, CharSize * 3 / 2 ), olc::vi2d{ CharSize * 25, CharSize * 3 }, olc::BLACK, true,
@@ -2813,22 +2812,22 @@ public:
 		}
 		UI.push_back(gameMenu);
 		
-		panel* scoreBoard = new panel("scoreboard", olc::vi2d{ 0,0 }, olc::vi2d{ ScreenCellWidth, ScreenCellHeight } * CellSize, olc::Pixel(0,0,0,0), false);
+		panel* scoreBoard = new panel("scoreboard", olc::vi2d{ 0,0 }, olc::vi2d{ ScreenCellWidth, ScreenCellHeight } * CellSize, olc::BLACK, false);
 		{
 			// Logo image
-			image* img = new image("logoimg", { 45 , -30 }, { 200, 150 }, olc::BLACK, false, { 0.185f, 0.185f }, olc::WHITE, true);
+			image* img = new image("logoimg", { 45 , -30 }, { 200, 150 }, olc::BLANK, false, { 0.185f, 0.185f }, olc::WHITE, true);
 			img->setDecal(ASSETS::logo);
 			scoreBoard->elements.push_back(img);
             
 			// Catagorys
 			scoreBoard->elements.push_back(
-				new label("scorecatagorieslabel", { CharSize * 4, CharSize * 4 }, { CharSize * 32, CharSize }, olc::BLACK, true,
+				new label("scorecatagorieslabel", { CharSize * 4, CharSize * 4 }, { CharSize * 32, CharSize }, olc::BLANK, true,
 					"PLACE\tPOINTS\tSTAGE\tNAME", olc::WHITE)
 			);
             
 			// Loaded scores
 			scoreBoard->elements.push_back(
-				new label("scoreslabel", { CharSize * 4, CharSize * 5 }, { ScreenCellWidth * CellSize - CharSize * 2 , ScreenCellWidth * CellSize - CharSize * 4 }, olc::BLACK, true, "", olc::WHITE)
+				new label("scoreslabel", { CharSize * 4, CharSize * 5 }, { ScreenCellWidth * CellSize - CharSize * 2 , ScreenCellWidth * CellSize - CharSize * 4 }, olc::BLANK, true, "", olc::WHITE)
 			);
             
 			// Menu for entering in player score
@@ -2917,7 +2916,7 @@ public:
 
 	bool OnUserUpdate(float fElapsedTime) override
 	{
-		Clear(olc::GREY);
+		//Clear(olc::GREY);
 		
 		// = = = = = UNIVERSAL INPUT = = = = = = //
 
@@ -2951,7 +2950,7 @@ public:
 int main()
 {
 	Infrastructure demo;
-	if (demo.Construct(ScreenCellWidth * CellSize, ScreenCellHeight * CellSize, 5, 5, false))
+	if (demo.Construct(ScreenCellWidth * CellSize, ScreenCellHeight * CellSize, 5, 5, false, true))
 		demo.Start();
 	return 0;
 }
